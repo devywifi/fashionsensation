@@ -4,11 +4,31 @@
   display: block;
 }
 #choose {
-  display: none;
+  background-color: #fff;
+  width: 60%;
+  max-width: 600px;
+  height: auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 100;
+  font-family: 'Arial', sans-serif;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: none; /* Hidden by default */
+  opacity: 0;    /* Ensure it starts as invisible */
 }
+
+#choose.active {
+  display: flex;  /* Show the dialog box */
+  opacity: 1;
+}
+
 
 /* Additional styles for close button */
 #fb_wrapper {
