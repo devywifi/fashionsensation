@@ -252,3 +252,31 @@ header hr {
   border-width: 1px;
   margin-bottom: 10px;
 }
+
+
+/* Modern cancel button */
+.cancel-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #ff4d4d; /* Cancel button color */
+  color: white;
+  border: none;
+  border-radius: 30px; /* Rounded corners */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Smooth transition */
+  outline: none;
+}
+
+/* Hover effect for the button */
+.cancel-btn:hover {
+  background-color: #e43f3f; /* Darken the background on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Deeper shadow */
+  transform: translateY(-3px); /* Slight lifting effect */
+}
+
+/* Focus effect (when clicked) */
+.cancel-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 77, 77, 0.3); /* Red focus ring */
+}
