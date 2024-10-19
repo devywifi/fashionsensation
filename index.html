@@ -710,6 +710,154 @@
 
     </script>
 
+    <script type="text/javascript">
+        var listCountries = ['China', 'India', 'Japan', 'South Korea', 'Indonesia', 'Saudi Arabia', 'Turkey', 'Iran', 'Thailand', 'Malaysia',
+            'Vietnam', 'Philippines', 'Pakistan', 'Bangladesh', 'Iraq', 'United Arab Emirates', 'Israel', 'Singapore',
+            'Kuwait', 'Jordan', 'Lebanon', 'Qatar', 'Kazakhstan', 'Oman', 'Sri Lanka', 'Myanmar', 'Bahrain', 'Yemen',
+            'Georgia', 'Armenia', 'Azerbaijan', 'Uzbekistan', 'Turkmenistan', 'Kyrgyzstan', 'Tajikistan', 'Maldives',
+            'Brunei', 'Bhutan'
+        ];
+        var listPeople = [
+            { name: 'Li Wei', image: 'https://randomuser.me/api/portraits/men/1.jpg' },
+            { name: 'Arjun Gupta', image: 'https://randomuser.me/api/portraits/men/2.jpg' },
+            { name: 'Haruto Tanaka', image: 'https://randomuser.me/api/portraits/men/3.jpg' },
+            // Add more names and corresponding image URLs here
+            { name: 'Ji-ho Kim', image: 'https://randomuser.me/api/portraits/men/4.jpg' },
+            { name: 'Budi Santoso', image: 'https://randomuser.me/api/portraits/men/5.jpg' },
+            { name: 'Faisal Al-Saud', image: 'https://randomuser.me/api/portraits/men/6.jpg' },
+            { name: 'Ahmet Yilmaz', image: 'https://randomuser.me/api/portraits/men/7.jpg' },
+            { name: 'Ali Reza', image: 'https://randomuser.me/api/portraits/men/8.jpg' },
+            { name: 'Somchai Prasert', image: 'https://randomuser.me/api/portraits/men/9.jpg' },
+            { name: 'Siti Nurhaliza', image: 'https://randomuser.me/api/portraits/women/1.jpg' },
+            { name: 'Nguyen Van A', image: 'https://randomuser.me/api/portraits/men/10.jpg' },
+            { name: 'Juan Dela Cruz', image: 'https://randomuser.me/api/portraits/men/11.jpg' },
+            { name: 'Mohammed Ali', image: 'https://randomuser.me/api/portraits/men/12.jpg' },
+            { name: 'Rahim Ahmed', image: 'https://randomuser.me/api/portraits/men/13.jpg' },
+            { name: 'Fatima Hassan', image: 'https://randomuser.me/api/portraits/women/2.jpg' },
+            { name: 'Layla Khalid', image: 'https://randomuser.me/api/portraits/women/3.jpg' },
+            { name: 'Lian Zhang', image: 'https://randomuser.me/api/portraits/women/4.jpg' },
+            { name: 'Siti Zainab', image: 'https://randomuser.me/api/portraits/women/5.jpg' },
+            { name: 'Hiroshi Yamamoto', image: 'https://randomuser.me/api/portraits/men/14.jpg' },
+            { name: 'Sun-woo Park', image: 'https://randomuser.me/api/portraits/men/15.jpg' },
+            { name: 'Priya Sharma', image: 'https://randomuser.me/api/portraits/women/6.jpg' },
+            { name: 'Hassan Jafari', image: 'https://randomuser.me/api/portraits/men/16.jpg' },
+            { name: 'Sandeep Kumar', image: 'https://randomuser.me/api/portraits/men/17.jpg' },
+            { name: 'Sara Lee', image: 'https://randomuser.me/api/portraits/women/7.jpg' },
+            { name: 'Tariq Abdullah', image: 'https://randomuser.me/api/portraits/men/18.jpg' },
+            { name: 'Rina Suzuki', image: 'https://randomuser.me/api/portraits/women/8.jpg' },
+            { name: 'Niran Chaiyaphum', image: 'https://randomuser.me/api/portraits/men/19.jpg' },
+            { name: 'Kavita Patel', image: 'https://randomuser.me/api/portraits/women/9.jpg' },
+            { name: 'Anwar Al-Mutairi', image: 'https://randomuser.me/api/portraits/men/20.jpg' },
+            { name: 'Mariam Al-Harbi', image: 'https://randomuser.me/api/portraits/women/10.jpg' },
+            { name: 'Chihiro Nakamura', image: 'https://randomuser.me/api/portraits/women/11.jpg' },
+            { name: 'Yuki Saito', image: 'https://randomuser.me/api/portraits/women/12.jpg' },
+            { name: 'Kazuki Takahashi', image: 'https://randomuser.me/api/portraits/men/21.jpg' },
+            { name: 'Aya Nakamura', image: 'https://randomuser.me/api/portraits/women/13.jpg' },
+            { name: 'Shuichi Tanaka', image: 'https://randomuser.me/api/portraits/men/22.jpg' },
+            { name: 'Aziz Al-Faraj', image: 'https://randomuser.me/api/portraits/men/23.jpg' },
+            { name: 'Siti Hajar', image: 'https://randomuser.me/api/portraits/women/14.jpg' }
+        ];
+
+        var transarray = ['just <b>voted</b>'];
+
+        // Function to assign random image URLs to listPeople array
+        function assignRandomImages() {
+            for (var i = 0; i < listPeople.length; i++) {
+                listPeople[i].image = `https://randomuser.me/api/portraits/${Math.random() > 0.5 ? 'men' : 'women'}/${Math.floor(Math.random() * 100)}.jpg?nat=ae`;
+            }
+        }
+
+        // Call function to assign random images
+        assignRandomImages();
+
+        // Function to display random messages
+        function request() {
+            clearInterval(run);
+            let interval = Math.floor(Math.random() * (20000 - 4000 + 1) + 4000);
+            var country = listCountries[Math.floor(Math.random() * listCountries.length)];
+            var person = listPeople[Math.floor(Math.random() * listPeople.length)];
+            var transtype = transarray[Math.floor(Math.random() * transarray.length)];
+
+            var msg = '<img src="' + person.image + '" class="profile-pic" alt="Profile Picture">' +
+                      '<span class="txt">' + person.name + ' from <b>' + country + '</b> ' + transtype ;
+            $(".mgm").html(msg); // Update entire content of .mgm
+            $(".mgm").stop(true).fadeIn(300);
+            window.setTimeout(function () {
+                $(".mgm").stop(true).fadeOut(300);
+            }, 10000);
+            run = setInterval(request, interval);
+        }
+
+        let interval = Math.floor(Math.random() * (20000 - 4000 + 1) + 4000);
+        var run = setInterval(request, interval);
+    </script>
+
+    <script>
+        var timer;
+        var startTime;
+        var elapsedTime = 1800 * 1000; // 30 minutes in milliseconds
+        var running = false;
+
+        function startTimer() {
+            startTime = Date.now();
+            timer = setInterval(updateTime, 1000); // Update every second
+            running = true;
+        }
+
+        function stopTimer() {
+            if (running) {
+                clearInterval(timer);
+                running = false;
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            elapsedTime = 1800 * 1000; // Reset to 30 minutes in milliseconds
+            updateDisplay(elapsedTime);
+            running = false;
+        }
+
+        function updateTime() {
+            var currentTime = Date.now();
+            elapsedTime = 1800 * 1000 - (currentTime - startTime);
+            if (elapsedTime < 0) {
+                elapsedTime = 0;
+                stopTimer();
+                alert('Countdown finished!');
+            }
+            updateDisplay(elapsedTime);
+        }
+
+        function updateDisplay(elapsedTime) {
+            var totalSeconds = Math.floor(elapsedTime / 1000);
+            var minutes = Math.floor(totalSeconds / 60);
+            var seconds = totalSeconds % 60;
+
+            var minutesStr = padTime(minutes);
+            var secondsStr = padTime(seconds);
+
+            document.getElementById('timer').textContent = minutesStr + ':' + secondsStr;
+        }
+
+        function padTime(time) {
+            return time < 10 ? '0' + time : time;
+        }
+
+        // Automatically start countdown on page load
+        window.onload = function() {
+            startTimer();
+
+            // Add event listener to hide stopwatch on any button click
+            document.addEventListener('click', function(event) {
+                if (event.target.tagName.toLowerCase() === 'button') {
+                    document.getElementById('stopwatch').style.display = 'none';
+                }
+            });
+        };
+    </script>
+
+
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
 
